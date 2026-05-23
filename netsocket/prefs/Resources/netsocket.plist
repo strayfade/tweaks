@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>netsocket</string>
+			<key>footerText</key>
+			<string>Forward lock-screen notifications to your netsocket endpoint.</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Connection</string>
+			<key>footerText</key>
+			<string>Use Development Mode only when testing against a non-production endpoint.</string>
+		</dict>
+		<dict>
+			<key>key</key>
+			<string>ServerURL</string>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>detail</key>
+			<string>PSDetailController</string>
+			<key>defaults</key>
+			<string>com.strayfade.netsocket~prefs</string>
+			<key>default</key>
+			<string>https://netsocket.strayfade.com/v1/postNotification</string>
+			<key>label</key>
+			<string>API URL</string>
+			<key>placeholder</key>
+			<string>https://netsocket.strayfade.com/v1/postNotification</string>
+			<key>keyboardType</key>
+			<string>URL</string>
+			<key>autocapitalizationType</key>
+			<string>None</string>
+			<key>autocorrectionType</key>
+			<string>No</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>defaults</key>
+			<string>com.strayfade.netsocket~prefs</string>
+			<key>default</key>
+			<false/>
+			<key>key</key>
+			<string>DevelopmentMode</string>
+			<key>label</key>
+			<string>Development Mode</string>
+		</dict>
+		<dict>
+			<key>key</key>
+			<string>DevelopmentServerURL</string>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>detail</key>
+			<string>PSDetailController</string>
+			<key>defaults</key>
+			<string>com.strayfade.netsocket~prefs</string>
+			<key>default</key>
+			<string>https://netsocket-dev.strayfade.com/v1/postNotification</string>
+			<key>label</key>
+			<string>Development URL</string>
+			<key>placeholder</key>
+			<string>https://netsocket-dev.strayfade.com/v1/postNotification</string>
+			<key>keyboardType</key>
+			<string>URL</string>
+			<key>autocapitalizationType</key>
+			<string>None</string>
+			<key>autocorrectionType</key>
+			<string>No</string>
+		</dict>
+		<dict>
+			<key>key</key>
+			<string>Password</string>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>detail</key>
+			<string>PSDetailController</string>
+			<key>defaults</key>
+			<string>com.strayfade.netsocket~prefs</string>
+			<key>default</key>
+			<string></string>
+			<key>label</key>
+			<string>Path Suffix Password</string>
+			<key>placeholder</key>
+			<string>Optional path suffix</string>
+			<key>isSecure</key>
+			<true/>
+			<key>autocapitalizationType</key>
+			<string>None</string>
+			<key>autocorrectionType</key>
+			<string>No</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Debugging</string>
+			<key>footerText</key>
+			<string>Use logs to verify outgoing requests and response status codes.</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>View Debug Log</string>
+			<key>action</key>
+			<string>showDebugLog</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Clear Debug Log</string>
+			<key>isDestructive</key>
+			<true/>
+			<key>action</key>
+			<string>clearDebugLog</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Maintenance</string>
+			<key>footerText</key>
+			<string>Respring applies tweak and preference changes immediately.</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Respring</string>
+			<key>isDestructive</key>
+			<true/>
+			<key>action</key>
+			<string>promptRespring</string>
+		</dict>
+	</array>
+	<key>title</key>
+	<string>netsocket</string>
+</dict>
+</plist>
