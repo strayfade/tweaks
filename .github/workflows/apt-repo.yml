@@ -33,13 +33,28 @@ jobs:
           tag: v2.1.5-procursus2
 
       - name: Setup Theos
-        uses: Randomblock1/theos-action@v1
-        with:
-          theos-dir: theos
+        run: |
+          THEOS="${{ github.workspace }}/theos"
+          echo "THEOS=$THEOS" >> "$GITHUB_ENV"
+
+          git clone --depth 1 --recursive https://github.com/theos/theos.git "$THEOS"
+          mkdir -p "$THEOS/sdks" "$THEOS/toolchain"
+
+          TMP_DL="$(mktemp -d)"
+          wget --no-verbose -O "$TMP_DL/swift.tar.xz" \
+            https://github.com/kabiroberai/swift-toolchain-linux/releases/download/v2.3.0/swift-5.8-ubuntu22.04.tar.xz
+          tar -xf "$TMP_DL/swift.tar.xz" -C "$THEOS/toolchain"
+          rm -rf "$TMP_DL"
+
+          if ! compgen -G "$THEOS/sdks/"'*.sdk' > /dev/null; then
+            rm -rf "$THEOS/sdks"
+            git clone --depth 1 https://github.com/theos/sdks.git "$THEOS/sdks"
+          fi
+
+          ls -1 "$THEOS/sdks"
 
       - name: Build packages
         env:
-          THEOS: ${{ github.workspace }}/theos
           THEOS_PACKAGE_SCHEME: rootless
         run: |
           chmod +x scripts/*.sh
