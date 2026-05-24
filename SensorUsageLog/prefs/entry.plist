@@ -1,0 +1,9 @@
+{
+    entry = {
+	bundle = sensorusagelog;
+	cell = PSLinkCell;
+	detail = sensorusagelogListController;
+	isController = 1;
+	label = SensorUsageLog;
+    };
+}

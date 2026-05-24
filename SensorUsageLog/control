@@ -1,0 +1,9 @@
+Package: com.noah.sensorusagelog
+Name: SensorUsageLog
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: Detailed sensor usage monitor with rankings
+Maintainer: Noah
+Author: Noah
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000)

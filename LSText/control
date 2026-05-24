@@ -1,0 +1,9 @@
+Package: com.noah.lstext
+Name: LSText
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: Show custom text on lock screen in widget style
+Maintainer: Noah
+Author: Noah
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000)

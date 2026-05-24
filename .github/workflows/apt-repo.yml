@@ -1,0 +1,58 @@
+name: Build apt repo
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: apt-repo-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            build-essential git perl patch rsync unzip \
+            libtool libtool-bin automake autoconf bison flex gperf \
+            libssl-dev libz-dev libplist-utils dpkg-dev bzip2 xz-utils file
+
+      - name: Install ldid
+        uses: MOZGIII/install-ldid-action@v1
+        with:
+          tag: v2.1.5-procursus2
+
+      - name: Setup Theos
+        uses: Randomblock1/theos-action@v1
+        with:
+          theos-dir: theos
+
+      - name: Build packages
+        env:
+          THEOS: ${{ github.workspace }}/theos
+          THEOS_PACKAGE_SCHEME: rootless
+        run: |
+          chmod +x scripts/*.sh
+          bash scripts/build-packages.sh
+
+      - name: Generate repository metadata
+        run: bash scripts/update-repo.sh
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./repo-output
+          publish_branch: gh-pages
+          force_orphan: true
+          commit_message: "Update apt repository"

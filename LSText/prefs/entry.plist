@@ -1,0 +1,9 @@
+{
+    entry = {
+	bundle = lstext;
+	cell = PSLinkCell;
+	detail = lstextListController;
+	isController = 1;
+	label = LSText;
+    };
+}

@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-exec bash "$ROOT/../scripts/theos-package-remote.sh" "$ROOT"
+exec bash "$ROOT/../theos-package-remote.sh" "$ROOT"

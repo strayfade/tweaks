@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-# Shared: copy tweak → temp dir, make package, upload .deb, install on device.
+# Shared: copy tweak -> temp dir, make package, upload .deb, install on device.
 # Usage: theos-package-remote.sh /path/to/tweak/dir
 #
 # Configure once via env or a file (see theos-device.env.example). Searches:
-#   <tweak>/theos-device.env  →  <repo>/theos-device.env  →  ~/.theos-device.env  →  ~/theos-device.env
+#   <tweak>/theos-device.env  ->  <repo>/theos-device.env  ->  ~/.theos-device.env  ->  ~/theos-device.env
 
 set -euo pipefail
 
@@ -84,6 +84,23 @@ theos_load_device_env || true
 prompt_if_missing "THEOS_DEVICE_IP" "Device IP"
 export THEOS_DEVICE_USER="${THEOS_DEVICE_USER:-mobile}"
 
+# Ensure Theos paths are available in non-login shells (e.g., wsl -e / batch launchers).
+if [[ -z "${THEOS:-}" ]]; then
+    if [[ -d "$HOME/theos" ]]; then
+        export THEOS="$HOME/theos"
+    elif [[ -d "/opt/theos" ]]; then
+        export THEOS="/opt/theos"
+    fi
+fi
+if [[ -n "${THEOS:-}" ]] && [[ -z "${THEOS_MAKE_PATH:-}" ]]; then
+    export THEOS_MAKE_PATH="$THEOS/makefiles"
+fi
+if [[ -z "${THEOS:-}" ]]; then
+    echo "THEOS is not set and no default installation was found."
+    echo "Set THEOS in your environment or install Theos to \$HOME/theos."
+    exit 1
+fi
+
 ssh_target="${THEOS_DEVICE_USER}@${THEOS_DEVICE_IP}"
 export _THEOS_SSH_TARGET="$ssh_target"
 
@@ -118,6 +135,12 @@ done
 shopt -u dotglob nullglob
 
 cd "$DEST_DIR"
+
+# Theos deb packaging requires Unix line endings in Debian metadata.
+if [[ -f "control" ]]; then
+    sed -i 's/\r$//' "control"
+fi
+
 make package THEOS_PACKAGE_SCHEME=rootless
 
 shopt -s nullglob

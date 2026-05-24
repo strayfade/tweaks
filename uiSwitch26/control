@@ -1,9 +1,0 @@
-Package: com.strayfade.switchwidth
-Name: switchwidth
-Version: 1.0.0
-Architecture: iphoneos-arm
-Description: Widen UISwitch track and thumb visuals
-Maintainer: strayfade
-Author: strayfade
-Section: Tweaks
-Depends: mobilesubstrate (>= 0.9.5000)

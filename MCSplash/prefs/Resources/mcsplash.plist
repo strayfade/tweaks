@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>cellClass</key>
+			<string>MCSplashHeaderCell</string>
+			<key>defaults</key>
+			<string>com.noah.mcsplash~prefs</string>
+			<key>default</key>
+			<true/>
+			<key>key</key>
+			<string>Enabled</string>
+			<key>height</key>
+			<real>220</real>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Developer</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>cellClass</key>
+			<string>MCSplashDeveloperCell</string>
+			<key>developerName</key>
+			<string>noah</string>
+			<key>developerHandle</key>
+			<string>@strayfade</string>
+			<key>developerImage</key>
+			<string>developer.png</string>
+			<key>developerURL</key>
+			<string>https://strayfade.com/</string>
+			<key>height</key>
+			<real>72</real>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Position</string>
+			<key>footerText</key>
+			<string>Adjust horizontal and vertical offset for the splash text.</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSliderCell</string>
+			<key>defaults</key>
+			<string>com.noah.mcsplash~prefs</string>
+			<key>default</key>
+			<real>8</real>
+			<key>key</key>
+			<string>OffsetX</string>
+			<key>label</key>
+			<string>X Position</string>
+			<key>min</key>
+			<real>-80</real>
+			<key>max</key>
+			<real>80</real>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSliderCell</string>
+			<key>defaults</key>
+			<string>com.noah.mcsplash~prefs</string>
+			<key>default</key>
+			<real>-4</real>
+			<key>key</key>
+			<string>OffsetY</string>
+			<key>label</key>
+			<string>Y Position</string>
+			<key>min</key>
+			<real>-80</real>
+			<key>max</key>
+			<real>80</real>
+		</dict>
+	</array>
+	<key>title</key>
+	<string> </string>
+</dict>
+</plist>

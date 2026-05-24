@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>SensorUsageLog</string>
+			<key>footerText</key>
+			<string>Logs camera, microphone, location, and motion sensor activity over time and ranks the most active apps.</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>defaults</key>
+			<string>com.noah.sensorusagelog~prefs</string>
+			<key>default</key>
+			<true/>
+			<key>key</key>
+			<string>Enabled</string>
+			<key>label</key>
+			<string>Enable SensorUsageLog</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Sensors</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>defaults</key>
+			<string>com.noah.sensorusagelog~prefs</string>
+			<key>default</key>
+			<true/>
+			<key>key</key>
+			<string>TrackCamera</string>
+			<key>label</key>
+			<string>Track Camera</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>defaults</key>
+			<string>com.noah.sensorusagelog~prefs</string>
+			<key>default</key>
+			<true/>
+			<key>key</key>
+			<string>TrackMicrophone</string>
+			<key>label</key>
+			<string>Track Microphone</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>defaults</key>
+			<string>com.noah.sensorusagelog~prefs</string>
+			<key>default</key>
+			<true/>
+			<key>key</key>
+			<string>TrackLocation</string>
+			<key>label</key>
+			<string>Track Location</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>defaults</key>
+			<string>com.noah.sensorusagelog~prefs</string>
+			<key>default</key>
+			<true/>
+			<key>key</key>
+			<string>TrackMotion</string>
+			<key>label</key>
+			<string>Track Motion</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Logging</string>
+			<key>footerText</key>
+			<string>Detailed metadata records API names, permission outcomes, durations, process IDs, and timestamps.</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>defaults</key>
+			<string>com.noah.sensorusagelog~prefs</string>
+			<key>default</key>
+			<true/>
+			<key>key</key>
+			<string>DetailedMetadata</string>
+			<key>label</key>
+			<string>Detailed Metadata</string>
+		</dict>
+		<dict>
+			<key>key</key>
+			<string>MaxLogLines</string>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>detail</key>
+			<string>PSDetailController</string>
+			<key>defaults</key>
+			<string>com.noah.sensorusagelog~prefs</string>
+			<key>default</key>
+			<integer>5000</integer>
+			<key>label</key>
+			<string>Max Log Lines</string>
+			<key>placeholder</key>
+			<string>5000</string>
+			<key>keyboardType</key>
+			<string>NumberPad</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>View Rankings</string>
+			<key>action</key>
+			<string>showRankingReport</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>View Raw Log</string>
+			<key>action</key>
+			<string>showRawLog</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Clear Log</string>
+			<key>isDestructive</key>
+			<true/>
+			<key>action</key>
+			<string>clearLog</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Respring</string>
+			<key>isDestructive</key>
+			<true/>
+			<key>action</key>
+			<string>promptRespring</string>
+		</dict>
+	</array>
+	<key>title</key>
+	<string>SensorUsageLog</string>
+</dict>
+</plist>
