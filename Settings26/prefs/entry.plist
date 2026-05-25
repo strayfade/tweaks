@@ -1,0 +1,10 @@
+{
+    entry = {
+	bundle = settings26;
+	cell = PSLinkCell;
+	detail = settings26ListController;
+	icon = icon.png;
+	isController = 1;
+	label = Settings26;
+    };
+}

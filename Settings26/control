@@ -1,8 +1,8 @@
-Package: com.strayfade.splashtext
-Name: SplashText
+Package: com.strayfade.settings26
+Name: Settings26
 Version: 1.0.0
 Architecture: iphoneos-arm
-Description: Minecraft-style rotating splash text on the lock screen.
+Description: Changes the appearance of Settings cells to resemble iOS 26.
 Maintainer: strayfade
 Author: strayfade
 Section: Tweaks

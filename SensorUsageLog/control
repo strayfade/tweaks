@@ -2,7 +2,7 @@ Package: com.strayfade.sensorusagelog
 Name: SensorUsageLog
 Version: 1.0.0
 Architecture: iphoneos-arm
-Description: Detailed sensor usage monitor with rankings
+Description: Detailed sensor usage monitor with app privacy rankings.
 Maintainer: strayfade
 Author: strayfade
 Section: Tweaks

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>cellClass</key>
+			<string>Settings26HeaderCell</string>
+			<key>defaults</key>
+			<string>com.strayfade.settings26~prefs</string>
+			<key>default</key>
+			<true/>
+			<key>key</key>
+			<string>Enabled</string>
+			<key>height</key>
+			<real>220</real>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Developer</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>cellClass</key>
+			<string>Settings26DeveloperCell</string>
+			<key>developerName</key>
+			<string>noah</string>
+			<key>developerHandle</key>
+			<string>@strayfade</string>
+			<key>developerImage</key>
+			<string>developer.png</string>
+			<key>developerURL</key>
+			<string>https://strayfade.com/</string>
+			<key>height</key>
+			<real>72</real>
+		</dict>
+	</array>
+	<key>title</key>
+	<string> </string>
+</dict>
+</plist>

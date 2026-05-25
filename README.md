@@ -17,3 +17,4 @@ https://strayfade.github.io/tweaks/
 | `com.strayfade.sensorusagelog` | Detailed sensor usage monitor with rankings |
 | `com.strayfade.lstext` | Custom lock screen text in widget style |
 | `com.strayfade.splashtext` | Minecraft-style rotating splash text near the lock screen clock |
+| `com.strayfade.settings26` | Makes Settings cells taller with larger rounded corners |
