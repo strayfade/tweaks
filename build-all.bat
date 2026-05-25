@@ -8,7 +8,7 @@ if not "%~1"=="" goto :single
 call "%ROOT_DIR%netsocket\build.bat" || exit /b %ERRORLEVEL%
 call "%ROOT_DIR%SensorUsageLog\build.bat" || exit /b %ERRORLEVEL%
 call "%ROOT_DIR%LSText\build.bat" || exit /b %ERRORLEVEL%
-call "%ROOT_DIR%MCSplash\build.bat" || exit /b %ERRORLEVEL%
+call "%ROOT_DIR%SplashText\build.bat" || exit /b %ERRORLEVEL%
 call "%ROOT_DIR%StandBy\build.bat" || exit /b %ERRORLEVEL%
 
 echo All tweaks built and installed.
@@ -18,7 +18,7 @@ exit /b 0
 set "TWEAK_NAME=%~1"
 if not exist "%ROOT_DIR%%TWEAK_NAME%\build.bat" (
   echo Unknown tweak "%TWEAK_NAME%".
-  echo Valid options: netsocket, SensorUsageLog, LSText, MCSplash, StandBy
+  echo Valid options: netsocket, SensorUsageLog, LSText, SplashText, StandBy
   exit /b 1
 )
 

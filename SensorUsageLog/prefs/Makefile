@@ -4,8 +4,8 @@ include $(THEOS)/makefiles/common.mk
 
 BUNDLE_NAME = sensorusagelog
 
-sensorusagelog_FILES = sensorusagelog.mm
-sensorusagelog_CFLAGS = -fobjc-arc
+sensorusagelog_FILES = sensorusagelog.mm $(wildcard Cells/*.m Cells/*.mm)
+sensorusagelog_CFLAGS = -fobjc-arc -DPACKAGE_VERSION='@"$(THEOS_PACKAGE_BASE_VERSION)"'
 sensorusagelog_INSTALL_PATH = /Library/PreferenceBundles
 sensorusagelog_FRAMEWORKS = UIKit
 sensorusagelog_PRIVATE_FRAMEWORKS = Preferences

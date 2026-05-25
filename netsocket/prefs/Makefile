@@ -4,8 +4,8 @@ include $(THEOS)/makefiles/common.mk
 
 BUNDLE_NAME = netsocket
 
-netsocket_FILES = netsocket.mm
-netsocket_CFLAGS = -fobjc-arc
+netsocket_FILES = netsocket.mm $(wildcard Cells/*.m Cells/*.mm)
+netsocket_CFLAGS = -fobjc-arc -DPACKAGE_VERSION='@"$(THEOS_PACKAGE_BASE_VERSION)"'
 netsocket_INSTALL_PATH = /Library/PreferenceBundles
 netsocket_FRAMEWORKS = UIKit
 netsocket_PRIVATE_FRAMEWORKS = Preferences

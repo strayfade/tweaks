@@ -1,9 +1,9 @@
-Package: com.noah.mcsplash
-Name: MCSplash
+Package: com.strayfade.splashtext
+Name: SplashText
 Version: 1.0.0
 Architecture: iphoneos-arm
 Description: Minecraft style rotating splash text near lockscreen clock
-Maintainer: Noah
-Author: Noah
+Maintainer: strayfade
+Author: strayfade
 Section: Tweaks
 Depends: mobilesubstrate (>= 0.9.5000)

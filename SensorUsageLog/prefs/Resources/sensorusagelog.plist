@@ -6,23 +6,39 @@
 	<array>
 		<dict>
 			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>SensorUsageLog</string>
-			<key>footerText</key>
-			<string>Logs camera, microphone, location, and motion sensor activity over time and ranks the most active apps.</string>
-		</dict>
-		<dict>
-			<key>cell</key>
 			<string>PSSwitchCell</string>
+			<key>cellClass</key>
+			<string>SensorUsageLogHeaderCell</string>
 			<key>defaults</key>
-			<string>com.noah.sensorusagelog~prefs</string>
+			<string>com.strayfade.sensorusagelog~prefs</string>
 			<key>default</key>
 			<true/>
 			<key>key</key>
 			<string>Enabled</string>
+			<key>height</key>
+			<real>220</real>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Enable SensorUsageLog</string>
+			<string>Developer</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>cellClass</key>
+			<string>SensorUsageLogDeveloperCell</string>
+			<key>developerName</key>
+			<string>noah</string>
+			<key>developerHandle</key>
+			<string>@strayfade</string>
+			<key>developerImage</key>
+			<string>developer.png</string>
+			<key>developerURL</key>
+			<string>https://strayfade.com/</string>
+			<key>height</key>
+			<real>72</real>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -34,7 +50,7 @@
 			<key>cell</key>
 			<string>PSSwitchCell</string>
 			<key>defaults</key>
-			<string>com.noah.sensorusagelog~prefs</string>
+			<string>com.strayfade.sensorusagelog~prefs</string>
 			<key>default</key>
 			<true/>
 			<key>key</key>
@@ -46,7 +62,7 @@
 			<key>cell</key>
 			<string>PSSwitchCell</string>
 			<key>defaults</key>
-			<string>com.noah.sensorusagelog~prefs</string>
+			<string>com.strayfade.sensorusagelog~prefs</string>
 			<key>default</key>
 			<true/>
 			<key>key</key>
@@ -58,7 +74,7 @@
 			<key>cell</key>
 			<string>PSSwitchCell</string>
 			<key>defaults</key>
-			<string>com.noah.sensorusagelog~prefs</string>
+			<string>com.strayfade.sensorusagelog~prefs</string>
 			<key>default</key>
 			<true/>
 			<key>key</key>
@@ -70,7 +86,7 @@
 			<key>cell</key>
 			<string>PSSwitchCell</string>
 			<key>defaults</key>
-			<string>com.noah.sensorusagelog~prefs</string>
+			<string>com.strayfade.sensorusagelog~prefs</string>
 			<key>default</key>
 			<true/>
 			<key>key</key>
@@ -90,7 +106,7 @@
 			<key>cell</key>
 			<string>PSSwitchCell</string>
 			<key>defaults</key>
-			<string>com.noah.sensorusagelog~prefs</string>
+			<string>com.strayfade.sensorusagelog~prefs</string>
 			<key>default</key>
 			<true/>
 			<key>key</key>
@@ -106,7 +122,7 @@
 			<key>detail</key>
 			<string>PSDetailController</string>
 			<key>defaults</key>
-			<string>com.noah.sensorusagelog~prefs</string>
+			<string>com.strayfade.sensorusagelog~prefs</string>
 			<key>default</key>
 			<integer>5000</integer>
 			<key>label</key>
@@ -142,18 +158,8 @@
 			<key>action</key>
 			<string>clearLog</string>
 		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSButtonCell</string>
-			<key>label</key>
-			<string>Respring</string>
-			<key>isDestructive</key>
-			<true/>
-			<key>action</key>
-			<string>promptRespring</string>
-		</dict>
 	</array>
 	<key>title</key>
-	<string>SensorUsageLog</string>
+	<string> </string>
 </dict>
 </plist>

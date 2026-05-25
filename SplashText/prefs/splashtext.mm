@@ -1,17 +1,18 @@
 #import <Preferences/Preferences.h>
 #import <spawn.h>
 #import <rootless.h>
+#import "TintColors.h"
 
 extern char **environ;
 
-@interface mcsplashListController : PSListController
+@interface splashtextListController : PSListController
 @end
 
-@implementation mcsplashListController
+@implementation splashtextListController
 
 - (id)specifiers {
 	if (!_specifiers) {
-		_specifiers = [self loadSpecifiersFromPlistName:@"mcsplash" target:self];
+		_specifiers = [self loadSpecifiersFromPlistName:@"splashtext" target:self];
 	}
 	return _specifiers;
 }
@@ -29,6 +30,7 @@ extern char **environ;
 	[topMenuButton setImage:[[UIImage systemImageNamed:@"gearshape.fill"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate] forState:UIControlStateNormal];
 	topMenuButton.contentVerticalAlignment = UIControlContentVerticalAlignmentFill;
 	topMenuButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentFill;
+	topMenuButton.tintColor = kTintColor;
 
 	UIAction *respringAction = [UIAction actionWithTitle:@"Respring"
 													image:[UIImage systemImageNamed:@"arrow.counterclockwise.circle.fill"]
@@ -41,6 +43,18 @@ extern char **environ;
 	topMenuButton.showsMenuAsPrimaryAction = YES;
 
 	self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:topMenuButton];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	self.navigationController.navigationBar.tintColor = kTintColor;
+	self.navigationController.navigationController.navigationBar.tintColor = kTintColor;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+	[super viewWillDisappear:animated];
+	self.navigationController.navigationBar.tintColor = UIColor.systemBlueColor;
+	self.navigationController.navigationController.navigationBar.tintColor = UIColor.systemBlueColor;
 }
 
 - (void)performRespring {
@@ -62,7 +76,7 @@ extern char **environ;
 
 - (void)promptRespring {
 	UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Respring Device"
-																   message:@"Apply MCSplash changes now?"
+																   message:@"Apply changes now?"
 															preferredStyle:UIAlertControllerStyleAlert];
 	[alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
 	[alert addAction:[UIAlertAction actionWithTitle:@"Respring"

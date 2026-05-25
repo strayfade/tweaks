@@ -1,7 +1,9 @@
 #import <UIKit/UIKit.h>
 #import <objc/runtime.h>
 
-static NSString *const kLSTextPrefsID = @"com.noah.lstext~prefs";
+static NSString *const kLSTextPrefsID = @"com.strayfade.lstext~prefs";
+static CGFloat const kLSTextYOffsetMin = -260.0f;
+static CGFloat const kLSTextYOffsetMax = -80.0f;
 
 static BOOL lstextReadBool(NSString *key, BOOL fallback) {
     CFPropertyListRef value = CFPreferencesCopyAppValue((CFStringRef)key, (CFStringRef)kLSTextPrefsID);
@@ -71,8 +73,20 @@ static NSString *lstextReadString(NSString *key, NSString *fallback) {
     if (textLine.length == 0) {
         textLine = @"Welcome";
     }
-    float opacity = MIN(MAX(lstextReadFloat(@"TextOpacity", 0.95f), 0.2f), 1.0f);
-    float verticalOffset = lstextReadFloat(@"VerticalOffset", -135.0f);
+    float rawOpacity = lstextReadFloat(@"TextOpacity", 95.0f);
+    if (rawOpacity <= 1.0f) {
+        rawOpacity *= 100.0f;
+    }
+    float opacityPercent = MIN(MAX(rawOpacity, 0.0f), 100.0f);
+    float opacity = opacityPercent / 100.0f;
+
+    float rawVerticalOffset = lstextReadFloat(@"VerticalOffset", 69.0f);
+    float verticalPercent = rawVerticalOffset;
+    if (rawVerticalOffset < 0.0f || rawVerticalOffset > 100.0f) {
+        verticalPercent = ((rawVerticalOffset - kLSTextYOffsetMin) / (kLSTextYOffsetMax - kLSTextYOffsetMin)) * 100.0f;
+    }
+    verticalPercent = MIN(MAX(verticalPercent, 0.0f), 100.0f);
+    float verticalOffset = kLSTextYOffsetMin + ((kLSTextYOffsetMax - kLSTextYOffsetMin) * (verticalPercent / 100.0f));
     float horizontalPadding = MAX(10.0f, lstextReadFloat(@"HorizontalPadding", 18.0f));
 
     UIView *container = [[UIView alloc] init];
@@ -144,6 +158,11 @@ static void lstextRemove(UIViewController *controller) {
     lstextInstall((UIViewController *)self);
 }
 
+- (void)viewDidLayoutSubviews {
+    %orig;
+    lstextInstall((UIViewController *)self);
+}
+
 - (void)viewDidDisappear:(BOOL)animated {
     lstextRemove((UIViewController *)self);
     %orig;
@@ -152,6 +171,11 @@ static void lstextRemove(UIViewController *controller) {
 
 %hook SBDashBoardViewController
 - (void)viewDidAppear:(BOOL)animated {
+    %orig;
+    lstextInstall((UIViewController *)self);
+}
+
+- (void)viewDidLayoutSubviews {
     %orig;
     lstextInstall((UIViewController *)self);
 }

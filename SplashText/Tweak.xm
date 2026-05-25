@@ -3,11 +3,11 @@
 #import <objc/runtime.h>
 #import <rootless.h>
 
-static NSString *const kMCSplashPrefsID = @"com.noah.mcsplash~prefs";
+static NSString *const kMCSplashPrefsID = @"com.strayfade.splashtext~prefs";
 static BOOL mcsplashTriedRegisteringFont = NO;
 static NSString *mcsplashRegisteredFontName = nil;
 // Developer tuneables for the anchor when clock geometry is imperfect.
-static CGFloat const kMCSplashStaticOffsetX = -30.0f;
+static CGFloat const kMCSplashStaticOffsetX = -70.0f;
 static CGFloat const kMCSplashStaticOffsetY = 0.0f;
 
 static BOOL mcsplashReadBool(NSString *key, BOOL fallback) {
@@ -427,10 +427,10 @@ static UIFont *mcsplashFont(void) {
     if (!mcsplashTriedRegisteringFont) {
         mcsplashTriedRegisteringFont = YES;
         NSArray<NSString *> *candidatePaths = @[
-            ROOT_PATH_NS(@"/Library/Application Support/MCSplash/minecraft.ttf"),
-            ROOT_PATH_NS(@"/Library/Application Support/MCSplash/Minecraft.ttf"),
-            ROOT_PATH_NS(@"/Library/Application Support/mcsplash/Minecraft.ttf"),
-            ROOT_PATH_NS(@"/Library/Application Support/mcsplash/minecraft.ttf"),
+            ROOT_PATH_NS(@"/Library/Application Support/SplashText/minecraft.ttf"),
+            ROOT_PATH_NS(@"/Library/Application Support/SplashText/Minecraft.ttf"),
+            ROOT_PATH_NS(@"/Library/Application Support/splashtext/Minecraft.ttf"),
+            ROOT_PATH_NS(@"/Library/Application Support/splashtext/minecraft.ttf"),
             ROOT_PATH_NS(@"/Library/MobileSubstrate/DynamicLibraries/Minecraft.ttf"),
             ROOT_PATH_NS(@"/Library/MobileSubstrate/DynamicLibraries/minecraft.ttf")
         ];
@@ -465,7 +465,7 @@ static UIFont *mcsplashFont(void) {
         }
     }
 
-    CGFloat size = MAX(14.0, MIN(38.0, mcsplashReadFloat(@"FontSize", 22.0)));
+    CGFloat size = MAX(4.0, MIN(30.0, mcsplashReadFloat(@"FontSize", 14.0)));
     NSString *fontName = mcsplashReadString(@"FontName", @"Minecraft");
     UIFont *font = [UIFont fontWithName:fontName size:size];
     if (font) {

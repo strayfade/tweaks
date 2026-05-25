@@ -1,14 +1,14 @@
-#import "MCSplashDeveloperCell.h"
+#import "SensorUsageLogDeveloperCell.h"
 #import <Preferences/PSSpecifier.h>
 
-@interface MCSplashDeveloperView : UIControl
+@interface SensorUsageLogDeveloperView : UIControl
 @property (nonatomic, copy) NSString *displayName;
 @property (nonatomic, copy) NSString *handle;
 @property (nonatomic, copy) NSString *imageName;
 @property (nonatomic, copy) NSString *openURL;
 @end
 
-@implementation MCSplashDeveloperView {
+@implementation SensorUsageLogDeveloperView {
 	UIImageView *_avatarView;
 	UILabel *_nameLabel;
 	UILabel *_handleLabel;
@@ -78,7 +78,7 @@
 
 @end
 
-@implementation MCSplashDeveloperCell
+@implementation SensorUsageLogDeveloperCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)identifier specifier:(PSSpecifier *)specifier {
 	self = [super initWithStyle:style reuseIdentifier:identifier specifier:specifier];
@@ -90,7 +90,7 @@
 	self.backgroundColor = UIColor.clearColor;
 	self.contentView.backgroundColor = UIColor.clearColor;
 
-	MCSplashDeveloperView *developerView = [MCSplashDeveloperView new];
+	SensorUsageLogDeveloperView *developerView = [SensorUsageLogDeveloperView new];
 	developerView.displayName = [specifier propertyForKey:@"developerName"] ?: @"Developer";
 	developerView.handle = [specifier propertyForKey:@"developerHandle"] ?: @"";
 	developerView.imageName = [specifier propertyForKey:@"developerImage"] ?: @"developer.png";

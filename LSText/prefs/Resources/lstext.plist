@@ -6,23 +6,47 @@
 	<array>
 		<dict>
 			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>LSText</string>
-			<key>footerText</key>
-			<string>Display a custom text line on the lock screen using the same rounded widget-like style and background.</string>
-		</dict>
-		<dict>
-			<key>cell</key>
 			<string>PSSwitchCell</string>
+			<key>cellClass</key>
+			<string>LSTextHeaderCell</string>
 			<key>defaults</key>
-			<string>com.noah.lstext~prefs</string>
+			<string>com.strayfade.lstext~prefs</string>
 			<key>default</key>
 			<true/>
 			<key>key</key>
 			<string>Enabled</string>
+			<key>height</key>
+			<real>220</real>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
 			<key>label</key>
-			<string>Enable LSText</string>
+			<string>Developer</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>cellClass</key>
+			<string>LSTextDeveloperCell</string>
+			<key>developerName</key>
+			<string>noah</string>
+			<key>developerHandle</key>
+			<string>@strayfade</string>
+			<key>developerImage</key>
+			<string>developer.png</string>
+			<key>developerURL</key>
+			<string>https://strayfade.com/</string>
+			<key>height</key>
+			<real>72</real>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Settings</string>
+			<key>footerText</key>
+			<string>Display a custom text line on the lock screen using the same rounded widget-like style and background.</string>
 		</dict>
 		<dict>
 			<key>key</key>
@@ -32,7 +56,7 @@
 			<key>detail</key>
 			<string>PSDetailController</string>
 			<key>defaults</key>
-			<string>com.noah.lstext~prefs</string>
+			<string>com.strayfade.lstext~prefs</string>
 			<key>default</key>
 			<string>Welcome</string>
 			<key>label</key>
@@ -40,66 +64,8 @@
 			<key>placeholder</key>
 			<string>Type custom text</string>
 		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSSliderCell</string>
-			<key>defaults</key>
-			<string>com.noah.lstext~prefs</string>
-			<key>default</key>
-			<real>0.95</real>
-			<key>key</key>
-			<string>TextOpacity</string>
-			<key>label</key>
-			<string>Opacity</string>
-			<key>min</key>
-			<real>0.2</real>
-			<key>max</key>
-			<real>1.0</real>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSSliderCell</string>
-			<key>defaults</key>
-			<string>com.noah.lstext~prefs</string>
-			<key>default</key>
-			<real>-135</real>
-			<key>key</key>
-			<string>VerticalOffset</string>
-			<key>label</key>
-			<string>Vertical Offset</string>
-			<key>min</key>
-			<real>-260</real>
-			<key>max</key>
-			<real>-80</real>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSSliderCell</string>
-			<key>defaults</key>
-			<string>com.noah.lstext~prefs</string>
-			<key>default</key>
-			<real>18</real>
-			<key>key</key>
-			<string>HorizontalPadding</string>
-			<key>label</key>
-			<string>Horizontal Padding</string>
-			<key>min</key>
-			<real>10</real>
-			<key>max</key>
-			<real>30</real>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSButtonCell</string>
-			<key>label</key>
-			<string>Respring</string>
-			<key>isDestructive</key>
-			<true/>
-			<key>action</key>
-			<string>promptRespring</string>
-		</dict>
 	</array>
 	<key>title</key>
-	<string>LSText</string>
+	<string> </string>
 </dict>
 </plist>

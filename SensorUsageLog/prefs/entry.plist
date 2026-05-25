@@ -3,6 +3,7 @@
 	bundle = sensorusagelog;
 	cell = PSLinkCell;
 	detail = sensorusagelogListController;
+	icon = icon.png;
 	isController = 1;
 	label = SensorUsageLog;
     };

@@ -1,10 +1,10 @@
 {
     entry = {
-	bundle = mcsplash;
+	bundle = splashtext;
 	cell = PSLinkCell;
-	detail = mcsplashListController;
+	detail = splashtextListController;
 	icon = icon.png;
 	isController = 1;
-	label = MCSplash;
+	label = SplashText;
     };
 }

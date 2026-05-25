@@ -1,9 +1,9 @@
-Package: com.noah.sensorusagelog
+Package: com.strayfade.sensorusagelog
 Name: SensorUsageLog
 Version: 1.0.0
 Architecture: iphoneos-arm
 Description: Detailed sensor usage monitor with rankings
-Maintainer: Noah
-Author: Noah
+Maintainer: strayfade
+Author: strayfade
 Section: Tweaks
 Depends: mobilesubstrate (>= 0.9.5000)

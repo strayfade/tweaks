@@ -84,6 +84,21 @@ theos_load_device_env || true
 prompt_if_missing "THEOS_DEVICE_IP" "Device IP"
 export THEOS_DEVICE_USER="${THEOS_DEVICE_USER:-mobile}"
 
+# Normalize possible CRLF/newline contamination from sourced env files.
+THEOS_DEVICE_IP="${THEOS_DEVICE_IP//$'\r'/}"
+THEOS_DEVICE_IP="${THEOS_DEVICE_IP//$'\n'/}"
+THEOS_DEVICE_USER="${THEOS_DEVICE_USER//$'\r'/}"
+THEOS_DEVICE_USER="${THEOS_DEVICE_USER//$'\n'/}"
+if [[ -n "${THEOS_DEVICE_SUDO_PASSWORD:-}" ]]; then
+    THEOS_DEVICE_SUDO_PASSWORD="${THEOS_DEVICE_SUDO_PASSWORD//$'\r'/}"
+    THEOS_DEVICE_SUDO_PASSWORD="${THEOS_DEVICE_SUDO_PASSWORD//$'\n'/}"
+fi
+
+if [[ -z "$THEOS_DEVICE_IP" || -z "$THEOS_DEVICE_USER" ]]; then
+    echo "THEOS_DEVICE_IP and THEOS_DEVICE_USER must be non-empty after normalization."
+    exit 1
+fi
+
 # Ensure Theos paths are available in non-login shells (e.g., wsl -e / batch launchers).
 if [[ -z "${THEOS:-}" ]]; then
     if [[ -d "$HOME/theos" ]]; then

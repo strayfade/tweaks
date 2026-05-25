@@ -14,6 +14,6 @@ https://strayfade.github.io/tweaks/
 | Package | Description |
 |---------|-------------|
 | `com.strayfade.netsocket` | Compatibility with netsocket service |
-| `com.noah.sensorusagelog` | Detailed sensor usage monitor with rankings |
-| `com.noah.lstext` | Custom lock screen text in widget style |
-| `com.noah.mcsplash` | Minecraft-style rotating splash text near the lock screen clock |
+| `com.strayfade.sensorusagelog` | Detailed sensor usage monitor with rankings |
+| `com.strayfade.lstext` | Custom lock screen text in widget style |
+| `com.strayfade.splashtext` | Minecraft-style rotating splash text near the lock screen clock |

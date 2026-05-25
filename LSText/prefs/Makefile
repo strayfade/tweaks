@@ -4,8 +4,8 @@ include $(THEOS)/makefiles/common.mk
 
 BUNDLE_NAME = lstext
 
-lstext_FILES = lstext.mm
-lstext_CFLAGS = -fobjc-arc
+lstext_FILES = lstext.mm $(wildcard Cells/*.m Cells/*.mm)
+lstext_CFLAGS = -fobjc-arc -DPACKAGE_VERSION='@"$(THEOS_PACKAGE_BASE_VERSION)"'
 lstext_INSTALL_PATH = /Library/PreferenceBundles
 lstext_FRAMEWORKS = UIKit
 lstext_PRIVATE_FRAMEWORKS = Preferences

@@ -4,7 +4,7 @@
 #import <UIKit/UIKit.h>
 #import <rootless.h>
 
-static NSString *const kSensorWatchPrefsID = @"com.noah.sensorusagelog~prefs";
+static NSString *const kSensorWatchPrefsID = @"com.strayfade.sensorusagelog~prefs";
 static NSString *const kSensorWatchEnabledKey = @"Enabled";
 static NSString *const kSensorWatchLogPathKey = @"CustomLogPath";
 static NSString *const kSensorWatchTrackCameraKey = @"TrackCamera";
@@ -15,7 +15,7 @@ static NSString *const kSensorWatchDetailedMetadataKey = @"DetailedMetadata";
 static NSString *const kSensorWatchMaxLogLinesKey = @"MaxLogLines";
 
 static NSString *sensorwatchDefaultLogPath() {
-    return ROOT_PATH_NS(@"/var/mobile/Library/Preferences/com.noah.sensorusagelog.events.jsonl");
+    return ROOT_PATH_NS(@"/var/mobile/Library/Preferences/com.strayfade.sensorusagelog.events.jsonl");
 }
 
 static BOOL sensorwatchReadBool(NSString *key, BOOL fallback) {
@@ -93,7 +93,7 @@ static dispatch_queue_t sensorwatchLogQueue() {
     static dispatch_queue_t queue = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        queue = dispatch_queue_create("com.noah.sensorusagelog.log", DISPATCH_QUEUE_SERIAL);
+        queue = dispatch_queue_create("com.strayfade.sensorusagelog.log", DISPATCH_QUEUE_SERIAL);
     });
     return queue;
 }

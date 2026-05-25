@@ -132,6 +132,10 @@ static NSURL *netsocketURLByAppendingPassword(NSURL *baseURL, NSString *password
 %hook NCNotificationDispatcher
 -(void)postNotificationWithRequest:(NCNotificationRequest*)req {
     @try {
+        if (!netsocketReadBoolPreference(CFSTR("Enabled"), YES)) {
+            %orig;
+            return;
+        }
         NSURL *serverUrl = [NSURL URLWithString:netsocketConfiguredServerURL()];
         if (!serverUrl) {
             netsocketLog(@"Invalid configured URL. Falling back to production default endpoint.");

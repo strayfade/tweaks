@@ -5,9 +5,9 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>mcsplash</string>
+	<string>splashtext</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.noah.mcsplash~prefs</string>
+	<string>com.strayfade.splashtext~prefs</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundlePackageType</key>
@@ -23,6 +23,6 @@
 	<key>MinimumOSVersion</key>
 	<string>3.0</string>
 	<key>NSPrincipalClass</key>
-	<string>mcsplashListController</string>
+	<string>splashtextListController</string>
 </dict>
 </plist>
