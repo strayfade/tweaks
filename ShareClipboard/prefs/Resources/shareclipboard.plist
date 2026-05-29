@@ -44,6 +44,20 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
+			<string>Download</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Download ShareClipboard for Windows</string>
+			<key>action</key>
+			<string>openWindowsDownload</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
 			<string>About</string>
 			<key>footerText</key>
 			<string>ShareClipboard syncs text and images with a Windows PC on the same Wi-Fi network. Devices discover each other automatically using mDNS. The Windows PC must be running the ShareClipboard process, available for free on GitHub.</string>

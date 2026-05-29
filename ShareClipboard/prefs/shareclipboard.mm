@@ -6,6 +6,7 @@
 extern char **environ;
 
 @interface shareclipboardListController : PSListController
+- (void)openWindowsDownload;
 @end
 
 @implementation shareclipboardListController
@@ -98,5 +99,13 @@ extern char **environ;
 }
 
 - (void)setTitle:(NSString *)title {}
+
+- (void)openWindowsDownload {
+	NSURL *url = [NSURL URLWithString:@"https://github.com/strayfade/ShareClipboard/releases/latest"];
+	if (!url) {
+		return;
+	}
+	[[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+}
 
 @end
