@@ -2,14 +2,15 @@
 
 Use this as the default pattern when adding or refactoring tweaks in this repo.
 
+## Basics
+- All tweaks should be compatible with iOS 16.1.1 (Rootless) and similar versions.
+
 ## Preference Bundle Style (Shared)
 
 - Use the same modern prefs layout used by `LSText`, `SplashText`, `SensorUsageLog`, and `netsocket`:
   1. Large header switch cell (`<Tweak>NameHeaderCell`)
   2. `Developer` group + custom developer card cell (`<Tweak>NameDeveloperCell`)
   3. Existing tweak settings grouped below developer
-- Remove in-list `Enable ...` rows when using the large header switch.
-- Remove in-list `Respring` row; keep respring in the top-right gear menu.
 - Set plist title to a blank string: `<string> </string>`.
 
 ## Required Prefs Files
@@ -23,6 +24,9 @@ For a styled tweak prefs bundle, keep this structure:
 - `prefs/Resources/<tweak>.plist`
 - `prefs/Resources/info.plist`
 - `prefs/entry.plist`
+
+## More about Preferences
+- developer.png will need to be copied from existing tweaks into new ones.
 
 ## Build System Compatibility
 

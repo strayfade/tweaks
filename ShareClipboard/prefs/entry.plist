@@ -1,0 +1,10 @@
+{
+    entry = {
+	bundle = shareclipboard;
+	cell = PSLinkCell;
+	detail = shareclipboardListController;
+	icon = icon.png;
+	isController = 1;
+	label = ShareClipboard;
+    };
+}

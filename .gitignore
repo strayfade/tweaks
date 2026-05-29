@@ -3,3 +3,4 @@ theos-device.env
 /netsocket/.theos
 *.deb
 repo-output/
+/ShareClipboard/windows/build

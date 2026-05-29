@@ -1,0 +1,9 @@
+Package: com.strayfade.shareclipboard
+Name: ShareClipboard
+Version: 1.0.0
+Architecture: iphoneos-arm
+Description: Shares the clipboard between iOS and a Windows PC on the same network.
+Maintainer: strayfade
+Author: strayfade
+Section: Tweaks
+Depends: mobilesubstrate (>= 0.9.5000)

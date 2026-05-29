@@ -1,20 +1,16 @@
-> [!WARNING]
-> **This repo is not for you!** These tweaks are all WIP and this repository is hosting the tweak repo so that I am able to test tweaks on regular devices.
-
 ## Add the repository
 
-In Sileo or Zebra, add this source:
+In your package manager, add this source:
     
-```text
 https://strayfade.github.io/tweaks/
-```
 
 ## Packages
 
 | Package | Description |
 |---------|-------------|
 | `com.strayfade.netsocket` | Compatibility with netsocket service |
-| `com.strayfade.sensorusagelog` | Detailed sensor usage monitor with rankings |
-| `com.strayfade.lstext` | Custom lock screen text in widget style |
+| `com.strayfade.sensorusagelog` | Detailed sensor usage monitor with application rankings |
+| `com.strayfade.lstext` | Custom, positionable lock screen text |
 | `com.strayfade.splashtext` | Minecraft-style rotating splash text near the lock screen clock |
-| `com.strayfade.settings26` | Makes Settings cells taller with larger rounded corners |
+| `com.strayfade.settings26` | Makes Settings cells look like the iOS 26+ redesign |
+| `com.strayfade.shareclipboard` | Shares the clipboard between iOS and a Windows PC on the same network |
