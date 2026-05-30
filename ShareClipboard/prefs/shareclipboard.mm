@@ -101,7 +101,7 @@ extern char **environ;
 - (void)setTitle:(NSString *)title {}
 
 - (void)openWindowsDownload {
-	NSURL *url = [NSURL URLWithString:@"https://github.com/strayfade/ShareClipboard/releases/latest"];
+	NSURL *url = [NSURL URLWithString:@"https://github.com/strayfade/tweaks/releases/latest"];
 	if (!url) {
 		return;
 	}

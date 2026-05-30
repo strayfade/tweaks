@@ -44,6 +44,20 @@
 			<key>cell</key>
 			<string>PSGroupCell</string>
 			<key>label</key>
+			<string>Download</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Download ScreenMirroring for Windows</string>
+			<key>action</key>
+			<string>openWindowsDownload</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
 			<string>Remote Access</string>
 			<key>footerText</key>
 			<string>Screen Mirroring requires a password to connect.</string>
@@ -117,32 +131,6 @@
 			<string>Frame Scale Divisor</string>
 			<key>footerText</key>
 			<string>Higher values send smaller frames (1 = full resolution, 2 = half, etc.) for better performance.</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-			<key>label</key>
-			<string>Debugging</string>
-			<key>footerText</key>
-			<string>Respring to save changes.</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSButtonCell</string>
-			<key>label</key>
-			<string>View Debug Log</string>
-			<key>action</key>
-			<string>showDebugLog</string>
-		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSButtonCell</string>
-			<key>label</key>
-			<string>Clear Debug Log</string>
-			<key>isDestructive</key>
-			<true/>
-			<key>action</key>
-			<string>clearDebugLog</string>
 		</dict>
 	</array>
 	<key>title</key>

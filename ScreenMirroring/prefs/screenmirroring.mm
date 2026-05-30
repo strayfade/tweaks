@@ -5,18 +5,8 @@
 
 extern char **environ;
 
-static NSString *smPrefsLogPath(void) {
-    static NSString *path = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        path = ROOT_PATH_NS(@"/var/mobile/Library/Preferences/com.strayfade.screenmirroring.log");
-    });
-    return path;
-}
-
 @interface screenmirroringListController : PSListController
-- (void)showDebugLog;
-- (void)clearDebugLog;
+- (void)openWindowsDownload;
 - (void)promptRespring;
 @end
 
@@ -69,42 +59,6 @@ static NSString *smPrefsLogPath(void) {
 	self.navigationController.navigationController.navigationBar.tintColor = UIColor.systemBlueColor;
 }
 
-- (void)showAlertWithTitle:(NSString *)title message:(NSString *)message {
-	UIAlertController *alert = [UIAlertController alertControllerWithTitle:title
-																   message:message
-															preferredStyle:UIAlertControllerStyleAlert];
-	[alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
-
-	UIViewController *presentingController = self.navigationController ?: self;
-	[presentingController presentViewController:alert animated:YES completion:nil];
-}
-
-- (void)showDebugLog {
-	NSString *log = [NSString stringWithContentsOfFile:smPrefsLogPath() encoding:NSUTF8StringEncoding error:nil];
-	if (!log || log.length == 0) {
-		log = @"No debug logs yet.";
-	}
-
-	UIViewController *logController = [[UIViewController alloc] init];
-	logController.title = @"Debug Log";
-	logController.view.backgroundColor = [UIColor systemBackgroundColor];
-
-	UITextView *textView = [[UITextView alloc] initWithFrame:logController.view.bounds];
-	textView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-	textView.editable = NO;
-	textView.selectable = YES;
-	textView.font = [UIFont monospacedSystemFontOfSize:12 weight:UIFontWeightRegular];
-	textView.text = log;
-
-	[logController.view addSubview:textView];
-	[self.navigationController pushViewController:logController animated:YES];
-}
-
-- (void)clearDebugLog {
-	[[NSFileManager defaultManager] removeItemAtPath:smPrefsLogPath() error:nil];
-	[self showAlertWithTitle:@"Screen Mirroring" message:@"Debug log cleared."];
-}
-
 - (void)performRespring {
 	pid_t pid = 0;
 	const char *args[] = { "killall", "SpringBoard", NULL };
@@ -147,4 +101,13 @@ static NSString *smPrefsLogPath(void) {
 }
 
 - (void)setTitle:(NSString *)title {}
+
+- (void)openWindowsDownload {
+	NSURL *url = [NSURL URLWithString:@"https://github.com/strayfade/tweaks/releases/latest"];
+	if (!url) {
+		return;
+	}
+	[[UIApplication sharedApplication] openURL:url options:@{} completionHandler:nil];
+}
+
 @end

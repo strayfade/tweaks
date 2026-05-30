@@ -1,6 +1,6 @@
 Package: com.strayfade.screenmirroring
 Name: Screen Mirroring
-Version: 1.0.1
+Version: 1.0.2
 Architecture: iphoneos-arm
 Description: Auto-discoverable VNC server for remote control. Requires a connection password.
 Maintainer: strayfade
