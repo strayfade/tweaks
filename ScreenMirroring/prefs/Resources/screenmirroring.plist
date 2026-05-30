@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+		<dict>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>cellClass</key>
+			<string>ScreenMirroringHeaderCell</string>
+			<key>defaults</key>
+			<string>com.strayfade.screenmirroring~prefs</string>
+			<key>default</key>
+			<true/>
+			<key>key</key>
+			<string>Enabled</string>
+			<key>height</key>
+			<real>220</real>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Developer</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>cellClass</key>
+			<string>ScreenMirroringDeveloperCell</string>
+			<key>developerName</key>
+			<string>noah</string>
+			<key>developerHandle</key>
+			<string>@strayfade</string>
+			<key>developerImage</key>
+			<string>developer.png</string>
+			<key>developerURL</key>
+			<string>https://strayfade.com/</string>
+			<key>height</key>
+			<real>72</real>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Remote Access</string>
+			<key>footerText</key>
+			<string>Screen Mirroring requires a password to connect.</string>
+		</dict>
+		<dict>
+			<key>key</key>
+			<string>Password</string>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>detail</key>
+			<string>PSDetailController</string>
+			<key>defaults</key>
+			<string>com.strayfade.screenmirroring~prefs</string>
+			<key>default</key>
+			<string></string>
+			<key>label</key>
+			<string>VNC Password</string>
+			<key>placeholder</key>
+			<string>Required (max 8 chars)</string>
+			<key>isSecure</key>
+			<true/>
+			<key>autocapitalizationType</key>
+			<string>None</string>
+			<key>autocorrectionType</key>
+			<string>No</string>
+		</dict>
+		<dict>
+			<key>key</key>
+			<string>LiveCapture</string>
+			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>defaults</key>
+			<string>com.strayfade.screenmirroring~prefs</string>
+			<key>default</key>
+			<true/>
+			<key>label</key>
+			<string>Live Screen Capture</string>
+			<key>footerText</key>
+			<string>Turn off to send a test pattern only (useful if connecting crashes SpringBoard). Respring after changing.</string>
+		</dict>
+		<dict>
+			<key>key</key>
+			<string>FrameRate</string>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>detail</key>
+			<string>PSDetailController</string>
+			<key>defaults</key>
+			<string>com.strayfade.screenmirroring~prefs</string>
+			<key>default</key>
+			<string>60</string>
+			<key>label</key>
+			<string>Target Frame Rate</string>
+			<key>footerText</key>
+			<string>Frames per second sent to VNC clients (15–60). Respring after changing.</string>
+			<key>keyboardType</key>
+			<string>NumberPad</string>
+		</dict>
+		<dict>
+			<key>key</key>
+			<string>FrameScale</string>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>detail</key>
+			<string>PSDetailController</string>
+			<key>defaults</key>
+			<string>com.strayfade.screenmirroring~prefs</string>
+			<key>default</key>
+			<string>2</string>
+			<key>label</key>
+			<string>Frame Scale Divisor</string>
+			<key>footerText</key>
+			<string>Higher values send smaller frames (1 = full resolution, 2 = half, etc.) for better performance.</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>Debugging</string>
+			<key>footerText</key>
+			<string>Respring to save changes.</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>View Debug Log</string>
+			<key>action</key>
+			<string>showDebugLog</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>label</key>
+			<string>Clear Debug Log</string>
+			<key>isDestructive</key>
+			<true/>
+			<key>action</key>
+			<string>clearDebugLog</string>
+		</dict>
+	</array>
+	<key>title</key>
+	<string> </string>
+</dict>
+</plist>

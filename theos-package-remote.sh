@@ -1,11 +1,18 @@
 #!/usr/bin/env bash
 # Shared: copy tweak -> temp dir, make package, upload .deb, install on device.
-# Usage: theos-package-remote.sh /path/to/tweak/dir
+# Usage: theos-package-remote.sh /path/to/tweak/di
 #
 # Configure once via env or a file (see theos-device.env.example). Searches:
 #   <tweak>/theos-device.env  ->  <repo>/theos-device.env  ->  ~/.theos-device.env  ->  ~/theos-device.env
 
 set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+if [[ -f "$SCRIPT_DIR/theos-package-lib.sh" ]]; then
+    sed -i 's/\r$//' "$SCRIPT_DIR/theos-package-lib.sh" 2>/dev/null || true
+fi
+# shellcheck source=theos-package-lib.sh
+source "$SCRIPT_DIR/theos-package-lib.sh"
 
 TWEAK_DIR="${1:?Usage: $0 /path/to/tweak}"
 TWEAK_DIR="$(cd "$TWEAK_DIR" && pwd)"
@@ -139,33 +146,13 @@ fi
 
 trap theos_cleanup_ssh_mux EXIT
 
-mkdir -p "$DEST_DIR"
-
-shopt -s dotglob nullglob
-for item in "$TWEAK_DIR"/*; do
-    if [[ "$(basename "$item")" != "build.sh" ]]; then
-        cp -a "$item" "$DEST_DIR/"
-    fi
-done
-shopt -u dotglob nullglob
-
-cd "$DEST_DIR"
-
-# Theos deb packaging requires Unix line endings in Debian metadata.
-if [[ -f "control" ]]; then
-    sed -i 's/\r$//' "control"
-fi
-
-make package THEOS_PACKAGE_SCHEME=rootless
+theos_bump_control_version "$TWEAK_DIR"
+theos_copy_tweak_sources "$TWEAK_DIR" "$DEST_DIR"
+theos_make_rootless_package "$DEST_DIR"
 
 shopt -s nullglob
 deb_files=(packages/*.deb)
 shopt -u nullglob
-
-if [[ ${#deb_files[@]} -eq 0 ]]; then
-    echo "No .deb package found in $DEST_DIR/packages."
-    exit 1
-fi
 
 latest_deb=""
 latest_mtime=0

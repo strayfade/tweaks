@@ -1,0 +1,10 @@
+{
+    entry = {
+	bundle = screenmirroring;
+	cell = PSLinkCell;
+	detail = screenmirroringListController;
+	icon = icon.png;
+	isController = 1;
+	label = "Screen Mirroring";
+    };
+}

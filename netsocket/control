@@ -1,6 +1,6 @@
 Package: com.strayfade.netsocket
 Name: netsocket
-Version: 1.2.4
+Version: 1.0.0
 Architecture: iphoneos-arm
 Description: Forwards incoming notifications to a custom endpoint for compatibility with netsocket.
 Maintainer: strayfade

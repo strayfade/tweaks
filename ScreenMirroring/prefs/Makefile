@@ -1,0 +1,17 @@
+ARCHS = arm64 arm64e
+
+include $(THEOS)/makefiles/common.mk
+
+BUNDLE_NAME = screenmirroring
+
+screenmirroring_FILES = screenmirroring.mm $(wildcard Cells/*.m Cells/*.mm)
+screenmirroring_CFLAGS = -fobjc-arc -DPACKAGE_VERSION='@"$(THEOS_PACKAGE_BASE_VERSION)"'
+screenmirroring_INSTALL_PATH = /Library/PreferenceBundles
+screenmirroring_FRAMEWORKS = UIKit
+screenmirroring_PRIVATE_FRAMEWORKS = Preferences
+
+include $(THEOS_MAKE_PATH)/bundle.mk
+
+internal-stage::
+	$(ECHO_NOTHING)mkdir -p $(THEOS_STAGING_DIR)/Library/PreferenceLoader/Preferences$(ECHO_END)
+	$(ECHO_NOTHING)cp entry.plist $(THEOS_STAGING_DIR)/Library/PreferenceLoader/Preferences/screenmirroring.plist$(ECHO_END)

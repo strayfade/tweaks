@@ -1,3 +1,3 @@
 #import <UIKit/UIColor.h>
 
-static UIColor *const kTintColor = [UIColor colorWithRed:0.47 green:0.79 blue:0.98 alpha:1.0];
+static UIColor *const kTintColor = [UIColor colorWithRed:0.188 green:0.820 blue:0.345 alpha:1.0];

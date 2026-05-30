@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net8.0-windows</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UseWPF>true</UseWPF>
+        <AssemblyName>ScreenMirroringViewer</AssemblyName>
+        <RootNamespace>ScreenMirroringViewer</RootNamespace>
+        <Version>1.0.0</Version>
+        <Authors>Strayfade</Authors>
+        <Description>Windows VNC viewer for the Screen Mirroring iOS tweak</Description>
+        <ApplicationIcon>Resources\app.ico</ApplicationIcon>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Resource Include="Resources\app.ico" />
+        <None Include="Resources\icon.png" />
+    </ItemGroup>
+
+</Project>

@@ -15,12 +15,12 @@ if not defined WSL_DIR (
   exit /b 1
 )
 
-echo [SensorUsageLog] Building and installing via WSL...
-wsl bash -lc "cd \"$WSL_DIR\" && sed -i 's/\r$//' build.sh ../theos-package-remote.sh && chmod +x build.sh ../theos-package-remote.sh && bash ./build.sh"
+echo [SensorUsageLog] Building via WSL...
+wsl bash -lc "cd \"$WSL_DIR\" && sed -i 's/\r$//' build.sh build-and-upload.sh ../theos-package-local.sh && chmod +x build.sh build-and-upload.sh ../theos-package-local.sh && bash ./build.sh"
 set "EXIT_CODE=%ERRORLEVEL%"
 
 if not "%EXIT_CODE%"=="0" (
-  echo [SensorUsageLog] Build/install failed with exit code %EXIT_CODE%.
+  echo [SensorUsageLog] Build failed with exit code %EXIT_CODE%.
   exit /b %EXIT_CODE%
 )
 

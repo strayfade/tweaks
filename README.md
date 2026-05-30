@@ -14,3 +14,4 @@ https://strayfade.github.io/tweaks/
 | `com.strayfade.splashtext` | Minecraft-style rotating splash text near the lock screen clock |
 | `com.strayfade.settings26` | Makes Settings cells look like the iOS 26+ redesign |
 | `com.strayfade.shareclipboard` | Shares the clipboard between iOS and a Windows PC on the same network |
+| `com.strayfade.screenmirroring` | Backport of iPhone Mirroring from newer versions of iOS/MacOS |

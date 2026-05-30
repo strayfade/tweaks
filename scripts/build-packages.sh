@@ -38,7 +38,7 @@ while IFS= read -r tweak || [[ -n "$tweak" ]]; do
   if [[ -f control ]]; then
     sed -i 's/\r$//' control
   fi
-  make clean package THEOS="$THEOS" THEOS_PACKAGE_SCHEME="$SCHEME"
+  make clean package THEOS="$THEOS" THEOS_PACKAGE_SCHEME="$SCHEME" FINALPACKAGE=1
 
   shopt -s nullglob
   debs=(packages/*.deb)
