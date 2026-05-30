@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Build with installer\build-installer.bat (requires WiX Toolset 3.14+).
+  Defines:
+    BuildOutputDir - folder containing ShareClipboard.exe (and icon.png)
+    ResourcesDir   - folder containing icon.png source
+-->
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+
+  <?ifndef ProductVersion ?>
+  <?define ProductVersion="1.0.0.0" ?>
+  <?endif ?>
+
+  <?ifndef BuildOutputDir ?>
+  <?define BuildOutputDir="..\build\Release" ?>
+  <?endif ?>
+
+  <?ifndef ResourcesDir ?>
+  <?define ResourcesDir="..\resources" ?>
+  <?endif ?>
+
+  <Product Id="*"
+           Name="ShareClipboard"
+           Language="1033"
+           Version="$(var.ProductVersion)"
+           Manufacturer="Strayfade"
+           UpgradeCode="7B4E9F2A-3C1D-4E8B-A9F0-2D5E8B1C4A6F">
+
+    <Package InstallerVersion="500"
+             Compressed="yes"
+             InstallScope="perUser"
+             Platform="x64"
+             Description="Sync the clipboard with a jailbroken iOS device on your local network." />
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of ShareClipboard is already installed."
+                  Schedule="afterInstallInitialize" />
+    <MediaTemplate EmbedCab="yes" />
+
+    <Property Id="ARPNOMODIFY" Value="yes" />
+    <Property Id="ARPCOMMENTS" Value="Clipboard sync for Windows and iOS (jailbreak tweak)." />
+
+    <Property Id="WixShellExecTarget" Value="[INSTALLFOLDER]ShareClipboard.exe" />
+    <CustomAction Id="LaunchInstalledExe"
+                  BinaryKey="WixCA"
+                  DllEntry="WixShellExec"
+                  Impersonate="yes" />
+
+    <UI>
+      <UIRef Id="WixUI_FeatureTree" />
+      <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch ShareClipboard" />
+      <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
+      <!-- Skip the empty license agreement dialog on first-time install. -->
+      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="CustomizeDlg" Order="3">1</Publish>
+      <Publish Dialog="CustomizeDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="3">1</Publish>
+      <Publish Dialog="ExitDialog"
+               Control="Finish"
+               Event="DoAction"
+               Value="LaunchInstalledExe">WIXUI_EXITDIALOGOPTIONALCHECKBOX = "1"</Publish>
+    </UI>
+
+    <util:CloseApplication Id="CloseRunningShareClipboard"
+                            Target="ShareClipboard.exe"
+                            Description="ShareClipboard is running and must be closed before setup can continue."
+                            CloseMessage="yes"
+                            TerminateProcess="0"
+                            RebootPrompt="no" />
+
+    <Feature Id="MainFeature"
+             Title="ShareClipboard"
+             Description="Installs ShareClipboard and its tray icon to your AppData folder."
+             Level="1"
+             Absent="disallow"
+             Display="expand">
+      <ComponentGroupRef Id="ApplicationFiles" />
+    </Feature>
+
+    <Feature Id="StartMenuShortcutFeature"
+             Title="Start menu shortcut"
+             Description="Adds ShareClipboard to the Start menu."
+             Level="1">
+      <ComponentRef Id="StartMenuShortcutComponent" />
+    </Feature>
+
+    <Feature Id="DesktopShortcutFeature"
+             Title="Desktop shortcut"
+             Description="Adds a ShareClipboard shortcut to the desktop."
+             Level="1">
+      <ComponentRef Id="DesktopShortcutComponent" />
+    </Feature>
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="AppDataFolder">
+        <Directory Id="INSTALLFOLDER" Name="ShareClipboard">
+          <!-- Per-user profile components must use an HKCU registry KeyPath (ICE38). -->
+          <Component Id="ApplicationComponent" Guid="1A2B3C4D-5E6F-4A7B-8C9D-0E1F2A3B4C5D" Win64="yes">
+            <File Id="ShareClipboardExe"
+                  Name="ShareClipboard.exe"
+                  Source="$(var.BuildOutputDir)\ShareClipboard.exe" />
+            <File Id="ShareClipboardIcon"
+                  Name="icon.png"
+                  Source="$(var.ResourcesDir)\icon.png" />
+            <RemoveFolder Id="RemoveInstallFolder" Directory="INSTALLFOLDER" On="uninstall" />
+            <RemoveRegistryValue Root="HKCU"
+                                 Key="Software\Microsoft\Windows\CurrentVersion\Run"
+                                 Name="ShareClipboard" />
+            <RegistryValue Root="HKCU"
+                           Key="Software\Strayfade\ShareClipboard"
+                           Name="InstallPath"
+                           Type="string"
+                           Value="[INSTALLFOLDER]"
+                           KeyPath="yes" />
+          </Component>
+        </Directory>
+      </Directory>
+
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="ShareClipboard" />
+      </Directory>
+
+      <Directory Id="DesktopFolder" Name="Desktop" />
+    </Directory>
+
+    <ComponentGroup Id="ApplicationFiles">
+      <ComponentRef Id="ApplicationComponent" />
+    </ComponentGroup>
+
+    <DirectoryRef Id="ApplicationProgramsFolder">
+      <Component Id="StartMenuShortcutComponent" Guid="4D5E6F7A-8B9C-4D0E-1F2A-3B4C5D6E7F8A" Win64="yes">
+        <Shortcut Id="StartMenuShortcut"
+                  Name="ShareClipboard"
+                  Description="Sync clipboard with iOS on your local network"
+                  Target="[INSTALLFOLDER]ShareClipboard.exe"
+                  WorkingDirectory="INSTALLFOLDER" />
+        <RemoveFolder Id="RemoveStartMenuFolder" Directory="ApplicationProgramsFolder" On="uninstall" />
+        <RegistryValue Root="HKCU"
+                       Key="Software\Strayfade\ShareClipboard"
+                       Name="StartMenuShortcut"
+                       Type="integer"
+                       Value="1"
+                       KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+
+    <DirectoryRef Id="DesktopFolder">
+      <Component Id="DesktopShortcutComponent" Guid="5E6F7A8B-9C0D-4E1F-2A3B-4C5D6E7F8A9B" Win64="yes">
+        <Shortcut Id="DesktopShortcut"
+                  Name="ShareClipboard"
+                  Description="Sync clipboard with iOS on your local network"
+                  Target="[INSTALLFOLDER]ShareClipboard.exe"
+                  WorkingDirectory="INSTALLFOLDER" />
+        <RegistryValue Root="HKCU"
+                       Key="Software\Strayfade\ShareClipboard"
+                       Name="DesktopShortcut"
+                       Type="integer"
+                       Value="1"
+                       KeyPath="yes" />
+      </Component>
+    </DirectoryRef>
+
+    <SetProperty Id="ARPINSTALLLOCATION" Value="[INSTALLFOLDER]" After="CostFinalize" />
+
+  </Product>
+</Wix>
