@@ -11,6 +11,7 @@ Use this as the default pattern when adding or refactoring tweaks in this repo.
   1. Large header switch cell (`<Tweak>NameHeaderCell`)
   2. `Developer` group + custom developer card cell (`<Tweak>NameDeveloperCell`)
   3. Existing tweak settings grouped below developer
+  4. Don't be wordy when writing footers or descriptions. Look at the other tweaks for examples.
 - Set plist title to a blank string: `<string> </string>`.
 
 ## Required Prefs Files
