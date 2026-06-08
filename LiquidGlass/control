@@ -1,0 +1,9 @@
+Package: com.strayfade.liquidglass
+Name: LiquidGlass
+Version: 1.3.317
+Architecture: iphoneos-arm
+Description: Backports most of the iOS 26 UI design to iOS 13-18, including Liquid Glass, the overhauled Settings app, and more.
+Maintainer: strayfade
+Author: strayfade
+Section: Tweaks
+Depends: mobilesubstrate | substitute | libhooker | ellekit, preferenceloader

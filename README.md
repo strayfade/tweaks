@@ -21,12 +21,12 @@ https://strayfade.github.io/tweaks/
 
 ## Packages
 
-| Name | Bundle ID | Description |
-|------|---------|-------------|
-| <img src="netsocket/prefs/Resources/icon.png" width="24" height="24" align="top"> netsocket | `com.strayfade.netsocket` | Compatibility with netsocket service |
-| <img src="SensorUsageLog/prefs/Resources/icon.png" width="24" height="24" align="top"> SensorUsageLog | `com.strayfade.sensorusagelog` | Detailed sensor usage monitor with application rankings |
-| <img src="LSText/prefs/Resources/icon.png" width="24" height="24" align="top"> LSText | `com.strayfade.lstext` | Custom, positionable lock screen text |
-| <img src="SplashText/prefs/Resources/icon.png" width="24" height="24" align="top"> SplashText | `com.strayfade.splashtext` | Minecraft-style splash text near the lock screen clock |
-| <img src="Settings26/prefs/Resources/icon.png" width="24" height="24" align="top"> Settings26 | `com.strayfade.settings26` | Makes Settings cells look like the iOS 26+ redesign |
-| <img src="ShareClipboard/prefs/Resources/icon.png" width="24" height="24" align="top"> ShareClipboard | `com.strayfade.shareclipboard` | Shares the clipboard between iOS and a Windows PC on the same network |
-| <img src="ScreenMirroring/prefs/Resources/icon.png" width="24" height="24" align="top"> ScreenMirroring | `com.strayfade.screenmirroring` | Backport of iPhone Mirroring from newer versions of iOS/MacOS |
+| Name | Description |
+|------|-------------|
+| <img src="netsocket/prefs/Resources/icon.png" width="24" height="24" align="top"> netsocket | Compatibility with netsocket service |
+| <img src="SensorUsageLog/prefs/Resources/icon.png" width="24" height="24" align="top"> SensorUsageLog | Detailed sensor usage monitor with application rankings |
+| <img src="LSText/prefs/Resources/icon.png" width="24" height="24" align="top"> LSText | Custom, positionable lock screen text |
+| <img src="SplashText/prefs/Resources/icon.png" width="24" height="24" align="top"> SplashText | Minecraft-style splash text near the lock screen clock |
+| <img src="ShareClipboard/prefs/Resources/icon.png" width="24" height="24" align="top"> ShareClipboard | Shares the clipboard between iOS and a Windows PC on the same network |
+| <img src="ScreenMirroring/prefs/Resources/icon.png" width="24" height="24" align="top"> ScreenMirroring | Backport of iPhone Mirroring from newer versions of iOS/MacOS |
+| <img src="LiquidGlass/prefs/Resources/icon.png" width="24" height="24" align="top"> Liquid Glass | Backports iOS 26 Liquid Glass visuals and Settings cell styling |

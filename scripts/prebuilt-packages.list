@@ -1,0 +1,4 @@
+# Tweak directories with packages/*.deb built on a Mac (not built in GitHub Actions).
+# After a Mac build, run: bash scripts/stage-prebuilt-packages.sh
+# That copies the newest local .deb to <tweak>/packages/release.deb for git/CI.
+LiquidGlass

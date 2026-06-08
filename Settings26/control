@@ -1,9 +1,0 @@
-Package: com.strayfade.settings26
-Name: Settings26
-Version: 1.0.0
-Architecture: iphoneos-arm
-Description: Changes the appearance of Settings cells to resemble iOS 26.
-Maintainer: strayfade
-Author: strayfade
-Section: Tweaks
-Depends: mobilesubstrate (>= 0.9.5000)

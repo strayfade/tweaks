@@ -1,0 +1,10 @@
+{
+    entry = {
+	bundle = liquidglass;
+	cell = PSLinkCell;
+	detail = liquidglassListController;
+	icon = icon.png;
+	isController = 1;
+	label = "Liquid Glass";
+    };
+}

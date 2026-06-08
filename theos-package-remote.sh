@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Shared: copy tweak -> temp dir, make package, upload .deb, install on device.
-# Usage: theos-package-remote.sh /path/to/tweak/di
+# Usage: theos-package-remote.sh /path/to/tweak/dir
 #
 # Configure once via env or a file (see theos-device.env.example). Searches:
 #   <tweak>/theos-device.env  ->  <repo>/theos-device.env  ->  ~/.theos-device.env  ->  ~/theos-device.env
@@ -44,69 +44,17 @@ prompt_if_missing() {
     export "$var_name=$current_value"
 }
 
-theos_load_device_env() {
-    local d="$TWEAK_DIR"
-    local repo_parent
-    repo_parent="$(cd "$d/.." && pwd)"
-    local candidates=(
-        "$d/theos-device.env"
-        "$repo_parent/theos-device.env"
-        "$HOME/.theos-device.env"
-        "$HOME/theos-device.env"
-    )
-    local f
-    for f in "${candidates[@]}"; do
-        if [[ -f "$f" ]]; then
-            echo "Device config: $f"
-            set -a
-            # shellcheck disable=SC1090
-            source "$f"
-            set +a
-            return 0
-        fi
-    done
-    return 1
-}
-
-theos_file_mtime() {
-    local f="$1"
-    if stat -c %Y "$f" >/dev/null 2>&1; then
-        stat -c %Y "$f"
-    else
-        stat -f %m "$f"
-    fi
-}
-
-theos_cleanup_ssh_mux() {
-    if [[ "${THEOS_SSH_MUX:-1}" == "0" ]] || [[ -z "${_THEOS_SSH_MUX_PATH:-}" ]]; then
-        return 0
-    fi
-    if [[ -S "$_THEOS_SSH_MUX_PATH" ]] || [[ -e "$_THEOS_SSH_MUX_PATH" ]]; then
-        ssh -o "BatchMode=yes" -o "ControlPath=${_THEOS_SSH_MUX_PATH}" -O exit "${_THEOS_SSH_TARGET}" 2>/dev/null || true
-    fi
-}
-
-theos_load_device_env || true
+theos_load_device_env "$TWEAK_DIR" || true
 
 prompt_if_missing "THEOS_DEVICE_IP" "Device IP"
-export THEOS_DEVICE_USER="${THEOS_DEVICE_USER:-mobile}"
 
-# Normalize possible CRLF/newline contamination from sourced env files.
-THEOS_DEVICE_IP="${THEOS_DEVICE_IP//$'\r'/}"
-THEOS_DEVICE_IP="${THEOS_DEVICE_IP//$'\n'/}"
-THEOS_DEVICE_USER="${THEOS_DEVICE_USER//$'\r'/}"
-THEOS_DEVICE_USER="${THEOS_DEVICE_USER//$'\n'/}"
-if [[ -n "${THEOS_DEVICE_SUDO_PASSWORD:-}" ]]; then
-    THEOS_DEVICE_SUDO_PASSWORD="${THEOS_DEVICE_SUDO_PASSWORD//$'\r'/}"
-    THEOS_DEVICE_SUDO_PASSWORD="${THEOS_DEVICE_SUDO_PASSWORD//$'\n'/}"
-fi
+theos_normalize_device_env
 
 if [[ -z "$THEOS_DEVICE_IP" || -z "$THEOS_DEVICE_USER" ]]; then
     echo "THEOS_DEVICE_IP and THEOS_DEVICE_USER must be non-empty after normalization."
     exit 1
 fi
 
-# Ensure Theos paths are available in non-login shells (e.g., wsl -e / batch launchers).
 if [[ -z "${THEOS:-}" ]]; then
     if [[ -d "$HOME/theos" ]]; then
         export THEOS="$HOME/theos"
@@ -123,65 +71,12 @@ if [[ -z "${THEOS:-}" ]]; then
     exit 1
 fi
 
-ssh_target="${THEOS_DEVICE_USER}@${THEOS_DEVICE_IP}"
-export _THEOS_SSH_TARGET="$ssh_target"
-
-# Reuse one SSH connection for scp + install (fewer auth prompts).
-# Set THEOS_SSH_MUX=0 to disable.
-_THEOS_SSH_MUX_PATH=""
-ssh_mux_opts=()
-scp_mux_opts=()
-if [[ "${THEOS_SSH_MUX:-1}" != "0" ]]; then
-    _THEOS_MUX_DIR="${THEOS_SSH_MUX_DIR:-$HOME/.ssh}"
-    mkdir -p "$_THEOS_MUX_DIR"
-    _THEOS_MUX_IP_SAFE="${THEOS_DEVICE_IP//:/_}"
-    _THEOS_SSH_MUX_PATH="$_THEOS_MUX_DIR/theos-mux-${THEOS_DEVICE_USER}-at-${_THEOS_MUX_IP_SAFE}"
-    ssh_mux_opts=(
-        -o "ControlMaster=auto"
-        -o "ControlPath=$_THEOS_SSH_MUX_PATH"
-        -o "ControlPersist=${THEOS_SSH_MUX_PERSIST:-300}"
-    )
-    scp_mux_opts=("${ssh_mux_opts[@]}")
-fi
-
-trap theos_cleanup_ssh_mux EXIT
+theos_device_ssh_mux_init
+trap theos_device_ssh_mux_cleanup EXIT
 
 theos_bump_control_version "$TWEAK_DIR"
 theos_copy_tweak_sources "$TWEAK_DIR" "$DEST_DIR"
 theos_make_rootless_package "$DEST_DIR"
 
-shopt -s nullglob
-deb_files=(packages/*.deb)
-shopt -u nullglob
-
-latest_deb=""
-latest_mtime=0
-for deb in "${deb_files[@]}"; do
-    mtime="$(theos_file_mtime "$deb")"
-    if (( mtime > latest_mtime )); then
-        latest_mtime="$mtime"
-        latest_deb="$deb"
-    fi
-done
-
-remote_deb="/var/mobile/Media/PublicStaging/$(basename "$latest_deb")"
-
-echo "Uploading $(basename "$latest_deb") to $ssh_target..."
-scp "${scp_mux_opts[@]}" "$latest_deb" "$ssh_target:$remote_deb"
-
-echo "Installing package on device..."
-# One remote shell + one sudo where possible (password read once; works with NOPASSWD too).
-remote_install_body="dpkg -i '$remote_deb' && rm -f '$remote_deb' && (killall -9 SpringBoard)"
-
-if ssh "${ssh_mux_opts[@]}" "$ssh_target" "sudo -n true" 2>/dev/null; then
-    ssh "${ssh_mux_opts[@]}" "$ssh_target" "sudo -n sh -c \"$remote_install_body\""
-else
-    if [[ -z "${THEOS_DEVICE_SUDO_PASSWORD:-}" ]]; then
-        echo "sudo on device requires a password. Set THEOS_DEVICE_SUDO_PASSWORD in theos-device.env or enter when prompted."
-        prompt_if_missing "THEOS_DEVICE_SUDO_PASSWORD" "Device sudo password" "1"
-    fi
-    escaped_password="${THEOS_DEVICE_SUDO_PASSWORD//\'/\'\\\'\'}"
-    ssh "${ssh_mux_opts[@]}" "$ssh_target" "printf '%s\n' '$escaped_password' | sudo -S -p '' sh -c \"$remote_install_body\""
-fi
-
-echo "Install complete."
+latest_deb="$(theos_pick_latest_deb "$DEST_DIR/packages")"
+theos_install_deb_on_device "$latest_deb"

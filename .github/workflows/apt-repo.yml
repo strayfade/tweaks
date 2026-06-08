@@ -53,11 +53,20 @@ jobs:
 
           ls -1 "$THEOS/sdks"
 
+      - name: Check prebuilt LiquidGlass package
+        run: |
+          if [[ -f LiquidGlass/packages/release.deb ]]; then
+            echo "Prebuilt LiquidGlass release.deb present (built on Mac, committed to repo)"
+            ls -lh LiquidGlass/packages/release.deb
+          else
+            echo "::warning::No LiquidGlass/packages/release.deb in the repo. CI will still publish other tweaks. Build on a Mac (see LiquidGlass/build.sh), then run scripts/stage-prebuilt-packages.sh and commit."
+          fi
+
       - name: Build packages
         env:
           THEOS_PACKAGE_SCHEME: rootless
         run: |
-          chmod +x scripts/*.sh
+          chmod +x scripts/*.sh theos-package-lib.sh
           bash scripts/build-packages.sh
 
       - name: Generate repository metadata

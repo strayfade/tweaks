@@ -1,6 +1,19 @@
 theos-device.env
 .theos-device.env
+LiquidGlass/theos-device.env
+**/build-mac-remote.env
 /netsocket/.theos
 *.deb
+!LiquidGlass/packages/
+LiquidGlass/packages/*
+!LiquidGlass/packages/release.deb
 repo-output/
 /ShareClipboard/windows/build
+.DS_Store
+
+# LiquidGlass local build artifacts (Mac-only Theos + Metal build)
+LiquidGlass/.theos/
+LiquidGlass/obj/
+LiquidGlass/_deb_extract/
+LiquidGlass/liquid_glass_tweak1
+LiquidGlass/liquidglass-build-link
