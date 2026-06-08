@@ -1,0 +1,118 @@
+Package: com.strayfade.liquidglass
+Icon: https://strayfade.github.io/tweaks/icons/com.strayfade.liquidglass.png
+Version: 1.3.317
+Architecture: iphoneos-arm64
+Maintainer: strayfade
+Installed-Size: 1632
+Depends: mobilesubstrate | substitute | libhooker | ellekit, preferenceloader
+Filename: debs/release.deb
+Size: 319124
+MD5sum: aeda9626ed81dda0b3104053ca916ea6
+SHA1: ed0433c99a82759717a8e3d64e76334eba56d817
+SHA256: 2e279ff55014edb7fafe09a827da7188375636c37d9737b6b32d67c9a27732a5
+Section: Tweaks
+Description: Backports most of the iOS 26 UI design to iOS 13-18, including Liquid Glass, the overhauled Settings app, and more.
+Author: strayfade
+Name: LiquidGlass
+
+Package: com.strayfade.lstext
+Icon: https://strayfade.github.io/tweaks/icons/com.strayfade.lstext.png
+Version: 1.0.0
+Architecture: iphoneos-arm64
+Maintainer: strayfade
+Installed-Size: 436
+Depends: mobilesubstrate (>= 0.9.5000)
+Filename: debs/com.strayfade.lstext_1.0.0_iphoneos-arm64.deb
+Size: 42736
+MD5sum: e4af6596b05994454a671a0f95bfd915
+SHA1: 149de7d80c56166ecced4f80d612dd406d7f1a5b
+SHA256: 5a2a5f9aeb152d00cb18b1940e22b05b2248435c0d02d63d7436eaf3762d8ba5
+Section: Tweaks
+Description: Shows custom text on lock screen.
+Author: strayfade
+Name: LSText
+
+Package: com.strayfade.netsocket
+Icon: https://strayfade.github.io/tweaks/icons/com.strayfade.netsocket.png
+Version: 1.0.0
+Architecture: iphoneos-arm64
+Maintainer: strayfade
+Installed-Size: 440
+Depends: mobilesubstrate (>= 0.9.5000)
+Filename: debs/com.strayfade.netsocket_1.0.0_iphoneos-arm64.deb
+Size: 44074
+MD5sum: a9a593e02b235164c8e3117e1b7096db
+SHA1: 11f7b086d640f787a1c88ac2a567694755c4cd00
+SHA256: c443f96912768a5fcc10e0fe7326cbe0b37bf9c449d2fb3e59400a9bd8e46d5e
+Section: Tweaks
+Description: Forwards incoming notifications to a custom endpoint for compatibility with netsocket.
+Author: strayfade
+Name: netsocket
+
+Package: com.strayfade.screenmirroring
+Icon: https://strayfade.github.io/tweaks/icons/com.strayfade.screenmirroring.png
+Version: 1.0.2
+Architecture: iphoneos-arm64
+Maintainer: strayfade
+Installed-Size: 572
+Depends: mobilesubstrate (>= 0.9.5000)
+Filename: debs/com.strayfade.screenmirroring_1.0.2_iphoneos-arm64.deb
+Size: 88504
+MD5sum: dd7c60663d82381bb082656a88fb59c3
+SHA1: 25044ecb184d889ba4185d3ca5e611fbafced3ea
+SHA256: bf8cd40440cb9c37c781950af6e17abcb831e857370b0e9217234f7cb9fa5eb9
+Section: Tweaks
+Description: Auto-discoverable VNC server for remote control. Requires a connection password.
+Author: strayfade
+Name: Screen Mirroring
+
+Package: com.strayfade.sensorusagelog
+Icon: https://strayfade.github.io/tweaks/icons/com.strayfade.sensorusagelog.png
+Version: 1.0.0
+Architecture: iphoneos-arm64
+Maintainer: strayfade
+Installed-Size: 468
+Depends: mobilesubstrate (>= 0.9.5000)
+Filename: debs/com.strayfade.sensorusagelog_1.0.0_iphoneos-arm64.deb
+Size: 53912
+MD5sum: a9afff136ecc624c96fd9e024cd08468
+SHA1: 0111f8b3b9a8e20dc6e843db174d27dbc6bc8452
+SHA256: 9dcad828161a31ac000f4c931af4c71011f7142be3c1013967d52b36c92bf428
+Section: Tweaks
+Description: Detailed sensor usage monitor with app privacy rankings.
+Author: strayfade
+Name: SensorUsageLog
+
+Package: com.strayfade.shareclipboard
+Icon: https://strayfade.github.io/tweaks/icons/com.strayfade.shareclipboard.png
+Version: 1.0.0
+Architecture: iphoneos-arm64
+Maintainer: strayfade
+Installed-Size: 536
+Depends: mobilesubstrate (>= 0.9.5000)
+Filename: debs/com.strayfade.shareclipboard_1.0.0_iphoneos-arm64.deb
+Size: 78628
+MD5sum: 699f99da55bc6131a126ce3a9e288030
+SHA1: 144e54fa68fdb67bd7d82c8f54c9ad93f0365802
+SHA256: f6592f6566c68af8355aa51e5c951130ee6143c2e5ae16f4820136b81bcf7066
+Section: Tweaks
+Description: Shares the clipboard between iOS and a Windows PC on the same network.
+Author: strayfade
+Name: ShareClipboard
+
+Package: com.strayfade.splashtext
+Icon: https://strayfade.github.io/tweaks/icons/com.strayfade.splashtext.png
+Version: 1.0.0
+Architecture: iphoneos-arm64
+Maintainer: strayfade
+Installed-Size: 504
+Depends: mobilesubstrate (>= 0.9.5000)
+Filename: debs/com.strayfade.splashtext_1.0.0_iphoneos-arm64.deb
+Size: 56256
+MD5sum: f8d27d4add268372ba8c6c651dc213f9
+SHA1: 016e7603c7e051ea35f1fc06b99d8c82e1e5719c
+SHA256: c8539f0ae53c71812cbb170d87e1b452577ce5a97556f2ae0a0f3e67eb0fd560
+Section: Tweaks
+Description: Minecraft-style rotating splash text on the lock screen.
+Author: strayfade
+Name: SplashText

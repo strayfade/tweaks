@@ -1,0 +1,24 @@
+Architectures: iphoneos-arm64 arm64 arm64e
+Codename: stable
+Components: main
+Date: Mon, 08 Jun 2026 02:53:33 +0000
+Description: Mostly small QOL jailbreak tweaks by strayfade
+Label: strayfade's repo
+Origin: strayfade's repo
+Suite: stable
+MD5Sum:
+ aaf27e931ea88827064e125a0f026afb             4309 Packages
+ 6ba34ea02e9d757ac3b46d38dffa9f28             1643 Packages.bz2
+ 45ff8bf507b371b4a15503eee21192b2              238 Release
+SHA1:
+ 8be3c0c405f1c37aedd1754991acde7c1e6bb54d             4309 Packages
+ e0be6b2b8b0cacfeba99927f9a109777dccd9d2a             1643 Packages.bz2
+ 62614e5728960cac3611d533c0e2bf079e607b27              238 Release
+SHA256:
+ 18aa238a90d6992be410fe5969c93775bfe3c2436e6ad9d2fc3483249ec78e44             4309 Packages
+ fe7e17fd7661f6e8b93acc94aad1a925c7324ee590261e7050caa927f40a78a2             1643 Packages.bz2
+ e5e7ee964bcb8771657eaaf14c55aaf50c9cc026fec97ab56524600b74c76141              238 Release
+SHA512:
+ 601049e8d1f4a60c2403c33a5fc6834934fbbbb99a5232e8f28b3b1cd424b3dbf7ef577c2c2aedba1d19b94d5c00cfeb8cba55eb95f930f6877999c9f8be501d             4309 Packages
+ 85dcbf18611ab54a89c57af10abbb9dc34f5d2e85a0785b0d72545bc03470fdaafccdcc741fb72a5d813a6d1f322c0769a28def99efb073256027d64e7d545f0             1643 Packages.bz2
+ 8cd2df84645d141af8b82fe9ce5ac0ac8190845d15d413cbb40a5357d2b2f3562521e12aa17682158ff909a2fd1644e758352b0b4f00f883c80c92a69b8a7b7d              238 Release
